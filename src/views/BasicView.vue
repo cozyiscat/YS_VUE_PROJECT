@@ -119,6 +119,32 @@
         <input type="text" v-model="pwdValue2" @input="changePwd1" placeholder="비밀번호 확인을 입력하세요"><br>
         <p v-if="errPwd">{{errPwd}}</p>
     </div>
+    <!-- 메소드 computed -->
+    <div>
+        <p>{{hello()}}</p>
+        <p>{{hello()}}</p>
+        <p>{{hello()}}</p>
+
+        <p>{{hello2}}</p>
+        <p>{{hello2}}</p>
+        <p>{{hello2}}</p>
+    </div>
+    <div>
+        성: <input type="text" v-model="lastName" @input="changeLastName"><br>
+        이름: <input type="text" v-model="firstName" @input="changeFirstName"><br>
+        <p>method:  {{ methodFullName() }}</p>
+        <p>method:  {{ methodFullName() }}</p>
+        <p>computed: {{ computeFullName }}</p>
+        <p>computed: {{ computeFullName }}</p>
+        <p>fullName: {{fullName}}</p>
+        <p>fullName: {{fullName}}</p>
+    </div>
+    <!-- watch -->
+    <div>
+        <h4>유저정보 : {{userInfo}}</h4>
+        <input type="text" v-model="userName">
+        <input type="text" v-model="userAge">
+    </div>
   <br><br><br><br><br><br>
 </template>
 
@@ -166,7 +192,31 @@ export default {
     pwdValue1:'',
     pwdValue2:'',
     errPwd:'비밀번호를 입력하세요',
+    lastName:'Go',
+    firstName:'seungwon',
+    fullName:'',
+    userName:'홍길동',
+    userAge:'30',
+    userInfo:'',
     };
+  },
+  watch:{
+    userName(){
+        this.userInfo = this.userName+'('+this.userAge+')';
+        },
+        // userAge(){
+        //   this.userInfo = this.userName+'('+this.userAge+')';
+        // },
+    },
+computed: {
+    hello2() {
+        console.log('hello2 호출');
+        return '안녕하세요, 반가워요';
+    },
+    computeFullName() {
+        console.log('computeFullName 호출');
+        return this.lastName + this.firstName;
+    }
   },
   setup() {
     
@@ -216,6 +266,25 @@ export default {
         }else{
             this.errPwd='비밀번호가 일치하지 않습니다.';
         }
+    },
+    hello(){
+        console.log ('hello()호출')
+        return '안녕하세요, 반갑습니다.'
+    },
+       changeLastName() {
+      // lastName 변경 시 fullName 업데이트
+      console.log('changeLastName 호출');
+      this.fullName = this.lastName + this.firstName;
+    },
+    changeFirstName() {
+      // firstName 변경 시 fullName 업데이트
+      console.log('changeFirstName 호출');
+      this.fullName = this.lastName + this.firstName;
+    },
+    methodFullName() {
+      // 메소드로 fullName 계산
+      console.log('methodFullName 호출');
+      return this.lastName + this.firstName;
     },
   }
 };
