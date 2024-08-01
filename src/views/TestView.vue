@@ -1,38 +1,42 @@
 <template>
   <div class="">
-    <input type="text" value="333"/><br>
-    <input type="text" v-bind:value="nick"/><br>
-    <input type="text" v-model="nick"/><br>
-    <input type="number" v-model="age"><br>
-    <input type="number" v-model.number="age"><br>
-    <textarea cols="30" rows="10">동해물과 백두산이</textarea><br>
-    <textarea cols="30" rows="10" v-model="messeage"></textarea><br>
-    <select name="" id="">
-      <option value="01">서울</option>
-      <option value="02">부산</option>
-      <option value="03">대구</option>
-      <option value="04">수원</option>
-    </select>
-    <select v-model="city">
-      <option value="01">서울</option>
-      <option value="02">부산</option>
-      <option value="03">대구</option>
-      <option value="04">수원</option>
-    </select>
+    <input type="checkbox" id="cbtn_agree">
+    <label for="cbtn_agree">동의</label> <br>
+    <label><input type="checkbox" v-model="agree">동의</label><br>
+    <label><input type="checkbox" v-model="agree2" true-value="동의" false-value="비동의">{{agree2}}</label><br>
+
+    <div>
+      <p>기본 피자에 원하시는 토핑을 추가하세요</p>
+      <label><input type="checkbox" v-model="pizza" value="치즈">치즈</label><br>
+      <label><input type="checkbox" v-model="pizza" value="파인애플">파인애플</label><br>
+      <label><input type="checkbox" v-model="pizza" value="페퍼로니">페퍼로니</label><br>
+      <p>당신이 선택하신 토핑은 {{ pizza }}입니다.</p>
+    </div>
+    <div>
+      <p>당신의 탕수육 취향은?</p>
+      <label><input type="radio" v-model="sweet" value="부먹">부먹</label><br>
+      <label><input type="radio" v-model="sweet" value="찍먹">찍먹</label><br>
+      <p>당신이 선택하신 토핑은 {{ sweet }}입니다.</p>
+
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   name: 'TestView',
+  components: {
+    
+  },
   data() {
     return {
-      nick:"노래하는 작은바위",
-      age:30,
-      messeage:"깊은산속 <i>옹달샘</i> 누가와서 먹나요",
-      city:'03',
+      agree:true,
+      agree2:"비동의",
+      pizza:[],
+      sweet:'',
     };
   },
+
   methods: {
     
   }
