@@ -1,21 +1,19 @@
 <template>
-  <div class="">
-    <!-- 내용을 추가하세요 -->
-     <page-title title="1번페이지"/>
-     <PageTitle v-bind:title="title2"/>
+  <div class="page_title">
+    <h2>Page Title</h2>
+    <p>제목: {{ title }}</p>
   </div>
 </template>
 
 <script>
-import PageTitle from '@/components/PageTitle.vue';
 export default {
-  name: 'TestView',
+  name: 'PageTitle',
   props: {
     // 문자열 타입의 prop 예시
-    //sampleString: {
-    //  type: String,
-    //  default: ''
-    //},
+    title: {
+     type: String,
+     default: '제목임당'
+    },
     // 숫자 타입의 prop 예시
     //sampleNumber: {
     //  type: Number,
@@ -33,14 +31,11 @@ export default {
     //}
   },
   components: {
-    PageTitle
     // 추가적으로 사용할 컴포넌트들을 등록합니다.
   },
   data() {
     return {
       // 컴포넌트의 데이터를 초기화합니다.
-      title1:'page 1',
-      title2:'page 2',
     };
   },
   watch: {
@@ -78,4 +73,7 @@ export default {
 
 <style scoped>
 /* 스타일을 추가하세요 */
+.page_title{
+    background-color: orange;
+}
 </style>

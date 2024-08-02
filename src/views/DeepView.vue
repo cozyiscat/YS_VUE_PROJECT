@@ -1,13 +1,10 @@
 <template>
   <div class="">
     <!-- 내용을 추가하세요 -->
-     <page-title title="1번페이지"/>
-     <PageTitle v-bind:title="title2"/>
   </div>
 </template>
 
 <script>
-import PageTitle from '@/components/PageTitle.vue';
 export default {
   name: 'TestView',
   props: {
@@ -33,14 +30,11 @@ export default {
     //}
   },
   components: {
-    PageTitle
     // 추가적으로 사용할 컴포넌트들을 등록합니다.
   },
   data() {
     return {
       // 컴포넌트의 데이터를 초기화합니다.
-      title1:'page 1',
-      title2:'page 2',
     };
   },
   watch: {
